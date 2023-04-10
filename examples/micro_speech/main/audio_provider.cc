@@ -60,7 +60,7 @@ const int32_t kAudioCaptureBufferSize = 80000;
 const int32_t i2s_bytes_to_read = 3200;
 
 static void i2s_init(void) {
-  // Start listening for audio: MONO @ 16KHz
+// Start listening for audio: MONO @ 16KHz
   i2s_config_t i2s_config = {
       .mode = (i2s_mode_t)(I2S_MODE_MASTER | I2S_MODE_RX | I2S_MODE_TX),
       .sample_rate = 16000,
@@ -75,10 +75,10 @@ static void i2s_init(void) {
       .fixed_mclk = -1,
   };
   i2s_pin_config_t pin_config = {
-      .bck_io_num = 26,    // IIS_SCLK
-      .ws_io_num = 32,     // IIS_LCLK
+      .bck_io_num = 41,    // IIS_SCLK
+      .ws_io_num = 42,     // IIS_LCLK
       .data_out_num = -1,  // IIS_DSIN
-      .data_in_num = 33,   // IIS_DOUT
+      .data_in_num = 2,   // IIS_DOUT
   };
   esp_err_t ret = 0;
   ret = i2s_driver_install((i2s_port_t)1, &i2s_config, 0, NULL);
