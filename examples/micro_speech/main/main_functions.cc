@@ -64,19 +64,29 @@ void setup() {
   //
   // tflite::AllOpsResolver resolver;
   // NOLINTNEXTLINE(runtime-global-variables)
+  // static tflite::MicroMutableOpResolver<4> micro_op_resolver;
+  // if (micro_op_resolver.AddDepthwiseConv2D() != kTfLiteOk) {
+  //   return;
+  // }
+  // if (micro_op_resolver.AddConv2D() != kTfLiteOk) {
+  //   return;
+  // }
+  // if (micro_op_resolver.AddFullyConnected() != kTfLiteOk) {
+  //   return;
+  // }
+  // if (micro_op_resolver.AddSoftmax() != kTfLiteOk) {
+  //   return;
+  // }
+  // if (micro_op_resolver.AddReshape() != kTfLiteOk) {
+  //   return;
+  // }
   static tflite::MicroMutableOpResolver<4> micro_op_resolver;
-  if (micro_op_resolver.AddDepthwiseConv2D() != kTfLiteOk) {
-    return;
-  }
-  if (micro_op_resolver.AddFullyConnected() != kTfLiteOk) {
-    return;
-  }
-  if (micro_op_resolver.AddSoftmax() != kTfLiteOk) {
-    return;
-  }
-  if (micro_op_resolver.AddReshape() != kTfLiteOk) {
-    return;
-  }
+  // micro_op_resolver.AddReshape();
+  micro_op_resolver.AddConv2D();
+  // micro_op_resolver.AddDepthwiseConv2D();
+  micro_op_resolver.AddFullyConnected();
+  micro_op_resolver.AddSoftmax();
+  micro_op_resolver.AddReshape();
 
   // Build an interpreter to run the model with.
   static tflite::MicroInterpreter static_interpreter(

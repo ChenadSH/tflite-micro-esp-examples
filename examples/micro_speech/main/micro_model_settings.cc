@@ -20,4 +20,6 @@ const char* kCategoryLabels[kCategoryCount] = {
     "unknown",
     "yes",
     "no",
+    "on",
+    "off",
 };

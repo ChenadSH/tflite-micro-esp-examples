@@ -92,3 +92,19 @@ As per the upstream repository policy, the tflite-lib is copied into the compone
 These examples are covered under Apache2 License.
 
 TensorFlow library code and third_party code contains their own license specified under respective [repos](https://github.com/tensorflow/tflite-micro).
+
+提换model.cc
+修改
+micro_model_settings.cc
+micro_model_settings.h
+
+kCategoryCount
+
+const char* kCategoryLabels[kCategoryCount] = {
+    "silence",
+    "unknown",
+    "yes",
+    "no",
+    "on",
+    "off",
+};
